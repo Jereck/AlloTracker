@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { logoutUser } from '../firebaseConfig';
+import { useFirestore } from '../useFirestore';
 import './ProfileCard.component.scss';
 
 const ProfileCard: React.FC = () => { 
+  const { docs } = useFirestore('product');
+  const [numItems, setNumItems] = useState('');
+
   return (
     <div className="card-container">
       <header>
@@ -21,7 +25,7 @@ const ProfileCard: React.FC = () => {
         <div className="data">
           <p style={{textAlign: 'center'}}>Your Shopping Habits This Month</p>
           <ul>
-            <li>4 <span>On List</span></li>
+            <li>{ docs.length } <span>On List</span></li>
             <li>1,235 <span>Bought</span></li>
             <li>$1,253 <span>Spent</span></li>
           </ul>

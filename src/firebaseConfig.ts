@@ -1,5 +1,6 @@
 import * as firebase from 'firebase'
 import 'firebase/firestore'
+import { contrast } from 'ionicons/icons'
 import { toast } from './toast'
 
 const config = {
@@ -52,5 +53,18 @@ export async function registerUser(username: string, password: string) {
   } catch(error) {
     toast(error.message, 4000)
     return false
+  }
+}
+
+export async function addItem(productName: string) {
+  try {
+    const res = await projectFirestore.collection('product').doc().set({
+      name: productName,
+      purchased: false
+    })
+    toast('Successfully added!', 5000)
+    return res
+  } catch(error) {
+    toast(error.message, 4000)
   }
 }
