@@ -16,7 +16,8 @@ import {
   IonTitle,
   IonHeader,
   IonButtons,
-  IonCheckbox
+  IonCheckbox,
+  IonInput
 } from '@ionic/react';
 import { useFirestore } from '../useFirestore';
 
@@ -27,6 +28,7 @@ const Shoppinglist: React.FC = () => {
   const { docs } = useFirestore('product');
   const [showModal, setShowModal] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [text, setText] = useState<string>();
 
   return (
     <IonPage>
@@ -40,7 +42,7 @@ const Shoppinglist: React.FC = () => {
               { docs && docs.map((doc, inx) => (
                 <IonItem key={doc.id}>
                   <IonCheckbox slot="start" />
-                  <IonLabel>{inx} - {doc.name}</IonLabel>
+                  <IonLabel>{doc.name}</IonLabel>
                 </IonItem>
               ))}
             </IonList>
@@ -48,15 +50,23 @@ const Shoppinglist: React.FC = () => {
             
             {/* MODAL */}
             <IonModal isOpen={showModal} cssClass='my-custom-class'>
-              <IonToolbar>
-                <IonButtons slot="secondary">
-                  <IonButton className="close-btn" onClick={() => setShowModal(false)}>
-                    <IonIcon icon={closeCircle}></IonIcon>
-                  </IonButton>
-                </IonButtons>
-                <IonTitle>Add Item to List</IonTitle>
-              </IonToolbar>
-              <p>This will be the modal</p>
+              <IonHeader>
+                <IonToolbar>
+                  <IonTitle>Add Item</IonTitle>
+                  <IonButtons slot="end">
+                    <IonButton onClick={() => setShowModal(false)}>
+                      Close
+                    </IonButton>
+                  </IonButtons>
+                </IonToolbar>
+              </IonHeader>
+              <IonContent>
+                <form>
+                  <IonItem>
+                    <IonInput value={text} placeholder="Name"></IonInput>
+                  </IonItem>
+                </form>
+              </IonContent>
             </IonModal>
             {/* END MODAL */}
 

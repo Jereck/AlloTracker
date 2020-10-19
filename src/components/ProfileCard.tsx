@@ -6,7 +6,7 @@ import './ProfileCard.component.scss';
 
 const ProfileCard: React.FC = () => { 
   return (
-    <div className="container">
+    <div className="card-container">
       <header>
         <div className="bio">
           <img src="http://www.croop.cl/UI/twitter/images/up.jpg" alt="background" className="bg" />

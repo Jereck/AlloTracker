@@ -7,6 +7,8 @@ import {
   IonTabButton,
   IonLabel,
   IonIcon,
+  IonButtons,
+  IonButton,
 } from '@ionic/react';
 import { useSelector } from 'react-redux';
 import { logoutUser } from '../firebaseConfig';
@@ -16,6 +18,7 @@ import { barChart, cart, home } from 'ionicons/icons';
 import Profile from './profile';
 import ShoppingList from './ShoppingList';
 import Analytics from './Analytics';
+import { profile } from 'console';
 
 const Dashboard: React.FC = () => {
   const username = useSelector((state: any) => state.user.username)
