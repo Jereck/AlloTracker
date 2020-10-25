@@ -1,6 +1,5 @@
 import * as firebase from 'firebase'
 import 'firebase/firestore'
-import { contrast } from 'ionicons/icons'
 import { toast } from './toast'
 
 const config = {

@@ -10,12 +10,6 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonButton,
-  IonModal,
-  IonIcon,
-  IonToolbar,
-  IonTitle,
-  IonHeader,
-  IonButtons,
   IonCheckbox,
   IonInput
 } from '@ionic/react';
